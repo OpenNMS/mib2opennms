@@ -1,0 +1,40 @@
+%define rel @RELEASE@
+%define version @VERSION@
+%define pkgname @PACKAGE@
+
+Name: %{pkgname}
+Version: %{version}
+Release: %{rel}
+License: GPL
+Group: Applications/System
+Summary: Generate OpenNMS Events from MIB Traps
+Source: %{name}-%{version}.tar.gz
+BuildRoot: %{_tmppath}/%{name}-%{version}-root
+
+Requires: libsmi
+BuildRequires: gcc, libsmi-devel
+
+%description
+A tool to generate OpenNMS events from MIB traps.
+
+%prep
+%setup -n %{name}-%{version}
+
+%build
+%configure
+make
+
+%install
+%makeinstall
+
+%clean
+if [ "$RPM_BUILD_ROOT" != "/" ]; then
+        rm -rf "$RPM_BUILD_ROOT"
+fi
+
+%files
+%attr(755,root,root) %{_bindir}/*
+
+%changelog
+* Thu Sep 20 2007 Benjamin Reed <ranger@opennms.org>
+- initial package

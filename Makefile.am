@@ -12,7 +12,7 @@ if MAKE_RPMS
 
 rpm: @RPM_TARGET@
 
-EXTRA_DIST = ChangeLog mib2opennms.spec
+EXTRA_DIST = ChangeLog mib2opennms.spec rename-mibs.pl
 
 $(RPM_TARGET): $(DISTFILES)
 	${MAKE} dist

@@ -6,7 +6,7 @@ RELEASE=1
 AC_SUBST([RELEASE])
 
 AC_CONFIG_MACRO_DIR([m4])
-AC_CONFIG_HEADER([config.h])
+AM_CONFIG_HEADER([config.h])
 AM_INIT_AUTOMAKE([1.9 foreign])
 
 # don't test c++ and f77 in libtool
@@ -21,9 +21,12 @@ AC_PROG_MAKE_SET
                
 AC_HEADER_STDC
 
+AM_RPM_INIT
+AM_CONDITIONAL(MAKE_RPMS, test x$make_rpms = xtrue)
+
 dnl check libsmi
-AC_CHECK_LIB([smi],[smiInit],,AC_MSG_ERROR([mib2opennms requires libsmi]))
 AC_CHECK_HEADER([smi.h],,AC_MSG_ERROR([mib2opennms requires smi.h]))
+AC_CHECK_LIB([smi],[smiInit],,AC_MSG_ERROR([mib2opennms requires libsmi]))
 
 AC_CONFIG_FILES([Makefile mib2opennms.spec])
 AC_OUTPUT
