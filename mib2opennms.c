@@ -199,6 +199,7 @@ int main(int argc, char *argv[])
 	char* STANDARD_PATH = ".:/usr/share/snmp/mibs";
 	char* mibpath = NULL;
 	int pathlen = 0;
+	char * newpath;
 
 	FILE* file = stdout;
 
@@ -209,7 +210,7 @@ int main(int argc, char *argv[])
 
 	fprintf(stderr, "mib2opennms version %s\n", VERSION);
 
-	while ( (c = getopt(argc, argv, "m:f:v:6w")) != -1 ) {
+	while ( (c = getopt(argc, argv, "m:f:v6w")) != -1 ) {
 		switch (c) {
 			case 'm' :
 				mibpath = optarg;
@@ -239,7 +240,7 @@ int main(int argc, char *argv[])
 
 	pathlen = strlen(STANDARD_PATH) + (mibpath == NULL ? 0 : strlen(mibpath)+1 /* for the colon */);
 
-	char * newpath = (char *) malloc( pathlen * sizeof(char) );
+	newpath = (char *) malloc( pathlen * sizeof(char) );
 	newpath[0] = '\0';
 
 	if (mibpath != NULL) {
