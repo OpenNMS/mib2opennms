@@ -1,6 +1,6 @@
 AC_PREREQ(2.59)
 
-AC_INIT([mib2opennms], [0.3.0], [http://www.opennms.org/])
+AC_INIT([mib2opennms], [0.3.1], [http://www.opennms.org/])
 
 RELEASE=1
 AC_SUBST([RELEASE])
