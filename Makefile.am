@@ -7,7 +7,14 @@ bin_SCRIPTS = rename-mibs.pl
 
 MAINTAINERCLEANFILES = aclocal.m4 config.guess config.sub configure depcomp install-sh ltmain.sh Makefile.in missing config.h.in *~ *.tar.gz
 
-EXTRA_DIST = ChangeLog rename-mibs.pl
+EXTRA_DIST = ChangeLog rename-mibs.pl m4/* \
+	debian/changelog \
+	debian/compat \
+	debian/control \
+	debian/copyright \
+	debian/dirs \
+	debian/rules
+
 
 if MAKE_RPMS
 .PHONY: rpm
