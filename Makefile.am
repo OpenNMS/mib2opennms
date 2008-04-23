@@ -7,12 +7,14 @@ bin_SCRIPTS = rename-mibs.pl
 
 MAINTAINERCLEANFILES = aclocal.m4 config.guess config.sub configure depcomp install-sh ltmain.sh Makefile.in missing config.h.in *~ *.tar.gz
 
+EXTRA_DIST = ChangeLog rename-mibs.pl
+
 if MAKE_RPMS
 .PHONY: rpm
 
 rpm: @RPM_TARGET@
 
-EXTRA_DIST = ChangeLog mib2opennms.spec rename-mibs.pl
+EXTRA_DIST += mib2opennms.spec
 
 $(RPM_TARGET): $(DISTFILES)
 	${MAKE} dist
