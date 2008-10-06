@@ -5,8 +5,8 @@ AC_INIT([mib2opennms], [0.3.1], [http://www.opennms.org/])
 RELEASE=1
 AC_SUBST([RELEASE])
 
+AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
-AM_CONFIG_HEADER([config.h])
 AM_INIT_AUTOMAKE([1.9 foreign])
 
 # don't test c++ and f77 in libtool
