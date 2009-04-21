@@ -1,31 +1,93 @@
--------------------------------------------------------------------------------
-- Changelog for mib2opennms
-- $Id$
--------------------------------------------------------------------------------
-0.2.1 -> 0.2.2
--------------------------------------------------------------------------------
-(by Eric Burghard <eburghar@free.fr>
-	- change the substitution %parm[oid]% -> %parm[#number]%.
-	- change /pre tag to /p.
-	- add a column to the description section to give an 
-	  explanation of all possible values taken by a given argument.
-	- add the name of the MIB from which comes the trap, to the 
-	  event-label tag.
-	- add the argument names and values to the logmsg tag inside 
-	  a <p> </p> pair.
-	- add a generic and a specific section.
+2008-10-06 19:02  rangerrick
 
-0.2.0 -> 0.2.1
--------------------------------------------------------------------------------
-	- Added autoconf and automake stuff
+	* configure.ac: use AC_CONFIG_HEADERS
 
-0.1 -> 0.2.0
--------------------------------------------------------------------------------
-	- Added comments in code
-	- Removed annoying "..output may be flawed" printout
-	- Remade the makefiles
+2008-09-05 16:21  PaulSD
 
+	* mib2opennms.c: Assorted mib2opennms fixes from Riccardo
+	  Magliocchetti (Bug 2523)
+	  - fix an off by one in allocation size
+	  - proper call to smiExit() at exit
+	  - plug a couple leaks by adding missing free()
+	  - don't exit on error before having freed all the allocated
+	  memory
+	  - a few minor formatting cleanups
 
-0.1
--------------------------------------------------------------------------------
-	- First release
+2008-04-23 21:02  rangerrick
+
+	* Makefile.am: add the debian bits to the tarball
+
+2008-04-23 20:39  rangerrick
+
+	* ., INSTALL, Makefile.am, mib2opennms.c: fix some pedantic build
+	  issues for debian -Wall
+
+2007-12-03 22:46  rangerrick
+
+	* configure.ac: update version to 0.3.1
+
+2007-10-01 14:44  rangerrick
+
+	* mib2opennms.c: patch from Andrew Hood <ajhood@fl.net.au> to fix
+	  some path-handling issues
+
+2007-09-20 22:13  rangerrick
+
+	* ., Makefile.am, config.h.in, configure.ac, mib2opennms.spec.in:
+	  it works
+
+2007-09-20 21:56  rangerrick
+
+	* ., Makefile.am, Makefile.in, aclocal.m4, config.h.in, configure,
+	  configure.ac, configure.in, depcomp, install-sh, mib2opennms.c,
+	  mib2opennms.spec.in, missing, mkinstalldirs, rename-mibs.pl, src:
+	  starting to rearrange things to match our other external code
+	  packages
+
+2007-09-20 21:47  rangerrick
+
+	* .: moving mib2opennms to a separate project
+
+2007-08-02 16:36  rangerrick
+
+	* merge fix for extra ; characters from Tim Nowaczyk
+
+2007-06-01 20:39  rangerrick
+
+	* fix wraparound in some integer values for some mibs
+	  this was reported last year on the list and somehow never got
+	  updated
+	  
+	  http://article.gmane.org/gmane.network.opennms.general/14552
+
+2007-05-31 17:55  rangerrick
+
+	* commit version bump in configure
+
+2007-05-31 17:54  rangerrick
+
+	* thanks brozow for fixing my awful c usage
+
+2007-05-31 16:55  rangerrick
+
+	* regenerated autoconf build
+
+2007-05-31 16:52  rangerrick
+
+	* add a script to rename mib files based on the definition in the
+	  file
+
+2007-05-31 15:40  rangerrick
+
+	* my c-fu is weak, but this seems to work -- always have at least
+	  "." and "/usr/share/snmp/mibs" in the mib path, plus whatever is
+	  passed with -m
+
+2006-06-05 22:01  brozow
+
+	* Finally mavenize trunk
+
+2006-05-26 16:27  brozow
+
+	* reorg the source code and begin mavenization\!
+
