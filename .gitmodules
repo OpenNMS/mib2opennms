@@ -1,0 +1,6 @@
+[submodule "m4"]
+	path = m4
+	url = ../autotools
+[submodule "debian"]
+	path = debian
+	url = ../debian-mib2opennms
