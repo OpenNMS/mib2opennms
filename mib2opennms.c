@@ -128,15 +128,15 @@ static int dumpXml(SmiModule* smiModule, FILE* file, EventDefaults* defs) {
 		* and a list of the trap parameters with values.
 		* The params are listed in a html table, hence the pretty '&lt;&gt;':s
 		*/
-		fprintf(file, "\t<descr>\n&lt;p&gt;%s&lt;/p&gt;", smiNode->description);
-		fprintf(file, "&lt;table&gt;");
+		fprintf(file, "\t<descr>\n<![CDATA[\n<p>%s</p>", smiNode->description);
+		fprintf(file, "<table>");
 
 		logmsg = (char *) malloc(2000 * sizeof (char));
 		if (!logmsg)
 			return ENOMEM;
 
 		logmsg[0]='\0';
-		sprintf(logmsg, "\t\t<logmsg dest='logndisplay'>&lt;p&gt;\n\t\t\t%s trap received ", 
+		sprintf(logmsg, "\t\t<logmsg dest='logndisplay'><![CDATA[<p>\n\t\t\t%s trap received ", 
 			smiNode->name);
 
 		for (smiElem = smiGetFirstElement(smiNode), i=1;
@@ -144,19 +144,19 @@ static int dumpXml(SmiModule* smiModule, FILE* file, EventDefaults* defs) {
 			smiElem = smiGetNextElement(smiElem), i++)
 		{
 			tmpNode = smiGetElementNode(smiElem);
-			fprintf(file, "\n\t&lt;tr&gt;&lt;td&gt;&lt;b&gt;\n\n\t%s&lt;/b&gt;&lt;/td&gt;", 
+			fprintf(file, "\n\t<tr><td><b>\n\n\t%s</b></td>", 
 				tmpNode->name);
-			fprintf(file, "&lt;td&gt;\n\t%%parm[#%d]%%;", i);
-			fprintf(file, "&lt;/td&gt;&lt;td&gt;&lt;p&gt;");
+			fprintf(file, "<td>\n\t%%parm[#%d]%%;", i);
+			fprintf(file, "</td><td><p>");
 			if (dumpNamed(tmpNode, file))  // Values actually printed ??
 				fprintf(file, "\t");   // yes - align text
-			fprintf(file, "&lt;/p&gt;&lt;/td&gt;");
-			fprintf(file, "&lt;/tr&gt;");
+			fprintf(file, "</p></td>");
+			fprintf(file, "</tr>");
 			sprintf(logmsg + strlen(logmsg), "\n\t\t\t%s=%%parm[#%d]%% ", 
 				tmpNode->name, i);
 		}
-		sprintf(logmsg + strlen(logmsg) - 1, "&lt;/p&gt;\n\t\t</logmsg>");
-		fprintf(file, "&lt;/table&gt;\n");
+		sprintf(logmsg + strlen(logmsg) - 1, "</p>\n]]>\t\t</logmsg>");
+		fprintf(file, "</table>\n]]>\n");
 		fprintf(file, "\t</descr>\n");
 
 		/*
