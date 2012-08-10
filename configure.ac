@@ -2,7 +2,7 @@ AC_PREREQ(2.59)
 
 AC_INIT([mib2opennms], [0.3.3], [http://www.opennms.org/])
 
-RELEASE=1
+RELEASE=3
 AC_SUBST([RELEASE])
 
 AC_CONFIG_HEADERS([config.h])
