@@ -91,3 +91,4 @@ above example, RFC-1213.txt should work.
 
 Also, the <mevalue> for generic should almost always be "6", although
 mib2opennms usually sets it to "0".
+
