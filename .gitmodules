@@ -1,6 +1,6 @@
 [submodule "m4"]
 	path = m4
-	url = ../autotools
+	url = git://github.com/OpenNMS/autotools.git
 [submodule "debian"]
 	path = debian
-	url = ../debian-mib2opennms
+	url = git://github.com/OpenNMS/debian-mib2opennms.git
